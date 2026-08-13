@@ -1,12 +1,26 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { CollectionItemCard } from './components/collection-item-card/collection-item-card';
+import { CollectionItem } from './models/collection-item';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
+  imports: [CollectionItemCard]
 })
 export class App {
-  protected readonly title = signal('collection-manager');
+  coin!: CollectionItem;
+  linx!: CollectionItem;
+
+  constructor() {
+    this.coin = new CollectionItem();
+    this.coin.name = 'Pièce de 1972';
+    this.coin.description = 'Pièce de 50 centimes de francs.';
+    this.coin.rarity = 'Commune';
+    this.coin.image = 'img/coin1.jpg';
+    this.coin.price = 170;
+
+    this.linx = new CollectionItem();
+  }
+
 }
