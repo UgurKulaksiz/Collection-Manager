@@ -1,59 +1,27 @@
-# CollectionManager
+# 🎴 CollectionManager - Application de gestion de collections
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.3.
+> 🎓 **Projet d'apprentissage** : Ce dépôt est un projet personnel réalisé dans le cadre d'un tutoriel pour apprendre et pratiquer les concepts récents d'**Angular** (Signaux, composabilité, etc.).
 
-## Development server
+## 📝 Description
+Ce projet est une application web moderne développée avec **Angular** permettant de gérer et d'organiser ses différentes collections (objets, cartes, timbres, pièces de monnaie, etc.). L'objectif est d'offrir une interface dynamique, réactive et élégante pour visualiser, suivre et structurer ses objets de collection de manière simple et intuitive.
 
-To start a local development server, run:
+## 🚀 Fonctionnalités
+- **Affichage des cartes d'objets** : Visualisation claire et structurée des objets de collection sous forme de grilles de cartes responsive.
+- **Gestion dynamique des données** : Utilisation des nouveaux **Signal inputs** d'Angular pour une réactivité optimale et des mises à jour fluides.
+- **Interface Responsive** : Design moderne avec dégradés CSS personnalisés, adapté à tous les types d'écrans (Mobiles, Tablettes, Ordinateurs).
 
-```bash
-ng serve
-```
+## 🛠️ Technologies utilisées
+- **Framework Frontend** : Angular 22 (v22.1.3)
+- **Langages** : TypeScript, HTML5, SCSS / CSS3
+- **Outillage & Build** : Angular CLI
+- **Environnement de développement** : IntelliJ IDEA
+- **Gestion de version** : Git & GitHub
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## 🛠️ Commandes utiles (Angular CLI)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+* **Serveur de développement** : `ng serve` (accès via `http://localhost:4200/`)
+* **Générer un composant** : `ng generate component nom-du-composant`
+* **Build de production** : `ng build`
+* **Lancer les tests** : `ng test`
