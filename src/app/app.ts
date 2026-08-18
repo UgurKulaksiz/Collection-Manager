@@ -1,14 +1,18 @@
 import { Component } from '@angular/core';
 import { CollectionItemCard } from './components/collection-item-card/collection-item-card';
 import { CollectionItem } from './models/collection-item';
+import { SearchBar } from './components/search-bar/search-bar';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
   styleUrl: './app.scss',
-  imports: [CollectionItemCard]
+  imports: [CollectionItemCard, SearchBar]
 })
 export class App {
+  searchText = '';
+  count = 0;
+
   coin!: CollectionItem;
   linx!: CollectionItem;
 
@@ -21,6 +25,10 @@ export class App {
     this.coin.price = 170;
 
     this.linx = new CollectionItem();
+  }
+
+  increamentCount() {
+    this.count++;
   }
 
 }
