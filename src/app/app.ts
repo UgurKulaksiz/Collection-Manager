@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, computed, effect, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, effect, model, signal } from '@angular/core';
 import { CollectionItemCard } from './components/collection-item-card/collection-item-card';
 import { CollectionItem } from './models/collection-item';
 import { SearchBar } from './components/search-bar/search-bar';
+import { Collection } from './models/collection';
 
 @Component({
   selector: 'app-root',
@@ -11,22 +12,21 @@ import { SearchBar } from './components/search-bar/search-bar';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class App {
-  searchText = '';
-  count = 0;
+  search = model('');
 
   coin!: CollectionItem;
   linx!: CollectionItem;
+  stamp!: CollectionItem;
 
-  itemList: CollectionItem[] = [];
-  // Création du Signal qui va contenir l'index à afficher
-  selectedItemIndex = signal(0);
-  // Création d'un Signal 'computed'
-  selectedItem = computed(() => {
-    return this.itemList[this.selectedItemIndex()];
-  });
+  selectedCollection = signal<Collection | null>(null);
+  collectionItems = computed(() => {
+    const allItems = this.selectedCollection()?.items;
 
-  logEffect = effect(() => {
-    console.log(this.selectedItemIndex(), this.selectedItem());
+    return allItems?.filter(
+      item => item.name.toLocaleLowerCase().includes((
+        this.search().toLocaleLowerCase()
+      ))
+    )
   });
 
   constructor() {
@@ -39,16 +39,22 @@ export class App {
 
     this.linx = new CollectionItem();
 
-    this.itemList = [this.coin, this.linx];
+    this.stamp = new CollectionItem();
+    this.stamp.name = 'Vieux timbre';
+    this.stamp.description = 'Un vieux timbre';
+    this.stamp.rarity = 'Rare';
+    this.stamp.image = 'img/timbre1.png';
+    this.stamp.price = 555;
+
+    const defaultCollection = new Collection();
+    defaultCollection.title = 'Default Collection';
+    defaultCollection.items = [
+      this.coin,
+      this.linx,
+      this.stamp
+    ];
+    this.selectedCollection.set(defaultCollection);
+
   }
 
-  increamentCount() {
-    this.count++;
-  }
-
-  incrementIndex() {
-    this.selectedItemIndex.update((currentValue) => {
-      return (currentValue + 1) % 2; // %2 pour permettre de switcher entre les éléments 0 & 1
-    });
-  }
 }
