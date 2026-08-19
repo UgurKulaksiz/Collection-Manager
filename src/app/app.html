@@ -9,7 +9,7 @@
 </header>
 
 <section class="collection-grid">
-  @for (item of collectionItems(); track item.name) {
+  @for (item of displayedItems(); track item.name) {
     @switch (item.rarity) {
         @case ('Legendary') {
           <div>
@@ -20,7 +20,7 @@
         @case ('Rare') {
           <div>
             <app-collection-item-card [item]="item"></app-collection-item-card>
-            <hr class="grey">
+            <hr class="dashed">
           </div>
         }
         @default {
@@ -29,9 +29,11 @@
     }
   }
 </section>
-@let itemsCount = collectionItems()?.length;
-@if (itemsCount) {
-    <div class="centered">Found {{itemsCount}} results</div>
+@let displayedItemsCount = displayedItems()?.length;
+@if (displayedItemsCount) {
+    <div class="centered"> {{displayedItemsCount}} objet(s) affiché(s).</div>
 } @else {
-    <div class="centered">No items found</div>
+    <div class="centered">Aucun résultat.</div>
 }
+
+<div class="centered"><button (click)="addGenericItem()">Add Generic Item</button></div>
